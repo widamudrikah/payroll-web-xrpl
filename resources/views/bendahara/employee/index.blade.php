@@ -14,13 +14,9 @@
     <div class="table-responsive">
 
         @if(session('message'))
-        <script>
-            Swal.fire({
-                title: "Berhasil",
-                icon: "success",
-                text: '{{ session(' message ') }}'
-            });
-        </script>
+        <div class="alert alert-warning">
+            {{session('message')}}
+        </div>
         @endif
 
         <table class="table table-bordered table-hover align-middle bg-white">
