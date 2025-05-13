@@ -41,8 +41,10 @@
                     <td>
                         <a href="{{ route('manage.employee.edit', $employee->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         <!-- Tombol Hapus -->
-                        <form action="#" class="d-inline">
-                            <button type="button" class="btn btn-sm btn-danger">Hapus</button>
+                        <form action="{{ route('manage.employee.delete', $employee->id) }}" method="POST" class="d-inline" id="delete-form-{{ $employee->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $employee->id }})">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -56,4 +58,22 @@
     </div>
 </div>
 
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: "Apakah kamu yakin?",
+            text: "Karyawan ini akan dihapus!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, Hapus!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // proses hapus data
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
 @endsection

@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function index() {
-        echo "ini karyawan";
+        return view('employee.dashboard');
     }
 }

@@ -62,4 +62,14 @@ class ManageEmployeeController extends Controller
 
         return redirect()->route('manage.employee.index')->with('message', 'Berhasil update data karyawan');
     }
+
+    // hapus data karyawan
+    public function delete($id) {
+        $employee = Employee::findOrFail($id);
+        $user = User::findOrFail($employee->user_id);
+        // Hapus data karyawan dan user secara bersamaan
+        $user->delete();
+
+        return redirect()->route('manage.employee.index')->with('message', 'Karyawan berhasil dihapus');
+    }
 }
