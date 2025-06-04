@@ -11,10 +11,14 @@
     @endif
 
     <!-- Tombol Presensi -->
+    @if($hasCheckInToday)
+    <button class="btn btn-secondary" disabled>Kamu sudah absen</button>
+    @else
     <form action="{{ route('attendance.store') }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary">Absen Sekarang</button>
     </form>
+    @endif
 
     <!-- Tabel Presensi -->
     <h5 class="mb-3">Daftar Presensi Bulan Ini (1 - 30)</h5>

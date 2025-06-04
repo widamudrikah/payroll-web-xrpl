@@ -17,7 +17,7 @@
             <div class="card dashboard-card h-100 text-center p-4 bg-white">
                 <h5 class="card-title text-primary">Presensi</h5>
                 <p class="card-text">Lihat dan pantau kehadiran harian.</p>
-                <a href="#" class="btn btn-primary">Lihat</a>
+                <a href="{{ route('manage.attendance.index') }}" class="btn btn-primary">Lihat</a>
             </div>
         </div>
         <!-- Gaji -->
@@ -25,7 +25,7 @@
             <div class="card dashboard-card h-100 text-center p-4 bg-white">
                 <h5 class="card-title text-primary">Gaji</h5>
                 <p class="card-text">Hitung dan kelola gaji berdasarkan presensi.</p>
-                <a href="#" class="btn btn-primary">Cek Gaji</a>
+                <a href="{{ route('manage.payroll.index') }}" class="btn btn-primary">Cek Gaji</a>
             </div>
         </div>
     </div>

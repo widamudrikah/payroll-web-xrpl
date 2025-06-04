@@ -12,14 +12,19 @@ class AttendanceController extends Controller
 {
     public function index() {
         // AMBIL TANGGAL HARI INI DAN USER ID
-        // $today = Carbon::now()->toDateString();
+        $today = Carbon::now()->toDateString();
         $userId = auth()->id();
+
+        // pengecekan sudah absen atau belum
+        $hasCheckInToday = Attendance::where('user_id', $userId)
+                            ->whereDate('created_at', $today)
+                            ->exists();
 
         $currentMonth = Carbon::now()->month;
         $attendances = Attendance::where('user_id', $userId)
                         ->whereMonth('created_at', $currentMonth)
                         ->get();
-        return view('employee.attendance.index', compact('attendances'));
+        return view('employee.attendance.index', compact('attendances', 'hasCheckInToday'));
     }
 
     // membuat data presensi

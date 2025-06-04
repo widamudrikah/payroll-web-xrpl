@@ -1,6 +1,13 @@
 @extends('base')
 
 @section('content')
+
+@if(session('error'))
+    <div class="alert alert-primary" role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+
 <div class="container py-5">
     <h2 class="text-center mb-5 fw-semibold">Dashboard Karyawan</h2>
     <div class="row g-4">
@@ -17,7 +24,7 @@
             <div class="card dashboard-card h-100 text-center p-4 bg-white">
                 <h5 class="card-title text-primary">Gaji</h5>
                 <p class="card-text">Silahkan masuk untuk melihat slip gaji</p>
-                <a href="#" class="btn btn-primary">Lihat</a>
+                <a href="{{ route('salary.index') }}" class="btn btn-primary">Lihat</a>
             </div>
         </div>
     </div>
